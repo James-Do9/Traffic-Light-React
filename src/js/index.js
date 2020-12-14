@@ -11,4 +11,7 @@ import "../styles/index.scss";
 //import your own components
 import { Home } from "./component/home.js";
 //render your react application
+//function changeLights() {
 ReactDOM.render(<Home />, document.querySelector("#app"));
+//}
+//setInterval(changeLights, 5000);

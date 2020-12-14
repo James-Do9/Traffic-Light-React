@@ -7,11 +7,27 @@ export default class TrafficLight extends React.Component {
 			clickedLight: null
 		};
 	}
-
+	componentDidMount() {
+		setInterval(() => {
+			this.setState({ clickedLight: "red" });
+		}, 2000);
+	}
+	componentDidUpdate() {
+		if (this.state.clickedLight == "green") {
+			setInterval(() => {
+				this.setState({ clickedLight: "yellow" });
+			}, 2000);
+		} else if (this.state.clickedLight == "yellow") {
+			setInterval(() => {
+				this.setState({ clickedLight: "red" });
+			}, 2000);
+		} else {
+			setInterval(() => {
+				this.setState({ clickedLight: "green" });
+			}, 2000);
+		}
+	}
 	render() {
-		var redStatus = "";
-		var yellowStatus = "";
-		var greenStatus = "";
 		return (
 			<div>
 				<div id="trafficTop" />
@@ -22,7 +38,7 @@ export default class TrafficLight extends React.Component {
 								? "selectedRed red light"
 								: "grey light"
 						}
-						onClick={() => this.setState({ clickedLight: "red" })}
+						//onClick={() => this.setState({ clickedLight: "red" })}
 					/>
 					<div
 						className={
@@ -30,9 +46,7 @@ export default class TrafficLight extends React.Component {
 								? "selectedYellow yellow light"
 								: "grey light"
 						}
-						onClick={() =>
-							this.setState({ clickedLight: "yellow" })
-						}
+						//onClick={() => this.setState({ clickedLight: "yellow" })}
 					/>
 					<div
 						className={
@@ -40,7 +54,7 @@ export default class TrafficLight extends React.Component {
 								? "selectedGreen green light"
 								: "grey light"
 						}
-						onClick={() => this.setState({ clickedLight: "green" })}
+						//onClick={() => this.setState({ clickedLight: "green" })}
 					/>
 				</div>
 			</div>
